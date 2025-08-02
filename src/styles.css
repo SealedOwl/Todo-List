@@ -1,0 +1,50 @@
+:root {
+	--h1: 1.3rem;
+	--bgColor1: #15202b;
+	--bgColor2: #192734;
+	--bgColor3: #22303c;
+	--bgColorPopUp: #273746;
+	--textColor: #eaebec;
+	--green: #2abd67;
+	--darkGreen: #1f8d4d;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	color: var(--textColor);
+}
+
+/* Header  */
+
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 2px solid var(--darkGreen);
+	padding: 1em 1.5em;
+	background-color: var(--bgColor3);
+}
+
+.logo {
+	display: flex;
+	align-items: center;
+	font-size: var(--h1);
+}
+
+.logo-img {
+	height: 2.5rem;
+	width: auto;
+}
+
+.sidebar-img {
+	filter: invert(1);
+}

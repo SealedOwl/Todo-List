@@ -1,12 +1,13 @@
 :root {
 	--h1: 1.3rem;
+	--lg: 1.4rem;
 	--bgColor1: #15202b;
 	--bgColor2: #192734;
 	--bgColor3: #22303c;
 	--bgColorPopUp: #273746;
 	--textColor: #eaebec;
-	--green: #2abd67;
-	--darkGreen: #1f8d4d;
+	--darkGreen: #2abd6770;
+	--green: #1f8d4d;
 }
 
 * {
@@ -29,7 +30,7 @@ header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	border-bottom: 2px solid var(--darkGreen);
+	border-bottom: 2px solid var(--green);
 	padding: 1em 1.5em;
 	background-color: var(--bgColor3);
 }
@@ -47,4 +48,87 @@ header {
 
 .sidebar-img {
 	filter: invert(1);
+	cursor: pointer;
+}
+
+/* Sidebar  */
+
+.sidebar {
+	background-color: var(--bgColor1);
+	max-width: 350px;
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+	padding: 1.5em 1.2em;
+	height: 100vh;
+	user-select: none;
+}
+
+.sidebar-section {
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+}
+
+.sidebar-section > h3 {
+	font-size: var(--lg);
+	border-bottom: 2px solid var(--textColor);
+}
+
+.sidebar-section img {
+	width: 30px;
+	height: auto;
+}
+
+.nav {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.nav button {
+	display: flex;
+	justify-content: left;
+	align-items: center;
+	gap: 10px;
+	padding: 5px 10px;
+	border-radius: 5px;
+	font-size: 1.2rem;
+	color: var(--textColor);
+	cursor: pointer;
+	border: none;
+	background-color: transparent;
+}
+
+.nav button:hover {
+	background-color: var(--bgColorPopUp);
+}
+
+.active {
+	background-color: var(--darkGreen) !important;
+	border-left: 3px solid var(--green) !important;
+	border-top-left-radius: 0px !important;
+	border-bottom-left-radius: 0px !important;
+}
+
+.add-project {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 1em;
+	padding: 5px 10px;
+	border-radius: 5px;
+	font-size: 1.2rem;
+	color: var(--textColor);
+	cursor: pointer;
+	border: none;
+	background-color: transparent;
+}
+
+.add-project > img {
+	filter: invert(1);
+}
+
+.add-project:hover {
+	background-color: var(--bgColorPopUp);
 }

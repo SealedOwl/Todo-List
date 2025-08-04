@@ -1,6 +1,7 @@
 :root {
 	--h1: 1.3rem;
 	--lg: 1.4rem;
+	--xl: 1.7rem;
 	--bgColor1: #15202b;
 	--bgColor2: #192734;
 	--bgColor3: #22303c;
@@ -51,16 +52,21 @@ header {
 	cursor: pointer;
 }
 
+.container {
+	display: flex;
+	height: calc(100vh - 70px);
+	background-color: var(--bgColor2);
+}
+
 /* Sidebar  */
 
 .sidebar {
 	background-color: var(--bgColor1);
-	max-width: 350px;
+	min-width: 350px;
 	display: flex;
 	flex-direction: column;
 	gap: 1em;
 	padding: 1.5em 1.2em;
-	height: 100vh;
 	user-select: none;
 }
 
@@ -131,4 +137,28 @@ header {
 
 .add-project:hover {
 	background-color: var(--bgColorPopUp);
+}
+
+/* Main Section  */
+
+.main-content {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	padding: 2em 3em;
+}
+
+.task-name {
+	padding: 0.5em 0.5em;
+	background-color: var(--green);
+	font-size: 2.5rem;
+	font-weight: 600;
+	border-radius: 3px;
+}
+
+.no-task {
+	text-align: center;
+	font-size: var(--xl);
+	font-weight: 600;
+	margin-top: 1em;
 }

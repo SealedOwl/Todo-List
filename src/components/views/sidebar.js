@@ -1,8 +1,8 @@
-import allTaskIcon from "../assets/inbox.png";
-import todayIcon from "../assets/today1.png";
-import weekIcon from "../assets/week2.png";
-import importantIcon from "../assets/star.png";
-import addIcon from "../assets/add-circle.svg";
+import allTaskIcon from "../../assets/inbox.png";
+import todayIcon from "../../assets/today1.png";
+import weekIcon from "../../assets/week2.png";
+import importantIcon from "../../assets/star.png";
+import addIcon from "../../assets/add-circle.svg";
 
 export default function createSidebar() {
 	const sidebar = document.createElement("aside");

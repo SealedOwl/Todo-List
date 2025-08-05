@@ -1,5 +1,5 @@
-import sidebar from "../assets/bars-solid-full.svg";
-import checkLogo from "../assets/check_logo.png";
+import sidebar from "../../assets/bars-solid-full.svg";
+import checkLogo from "../../assets/check_logo.png";
 
 export default function createHeader() {
 	const header = document.createElement("header");

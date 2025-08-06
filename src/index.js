@@ -1,8 +1,6 @@
 import "./styles.css";
 
-import createHeader from "./components/views/header";
-import createSidebar from "./components/views/sidebar";
-import createMainContent from "./components/views/mainContent";
+import { renderApp } from "./components/view";
 
 import {
 	handleCreateProject,
@@ -12,17 +10,7 @@ import {
 	handleDeleteTask,
 } from "./components/controller";
 
-const $content = document.querySelector("#content");
-
-$content.appendChild(createHeader());
-
-const container = document.createElement("div");
-container.classList.add("container");
-
-container.appendChild(createSidebar());
-container.appendChild(createMainContent());
-
-$content.appendChild(container);
+renderApp();
 
 // ----------------------------------------------------------------
 

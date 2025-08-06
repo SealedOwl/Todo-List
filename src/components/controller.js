@@ -26,7 +26,7 @@ function handleGetAllProjects() {
 }
 
 function handleDeleteTask(projectName, index) {
-	return deleteTask(projectName, index);
+	deleteTask(projectName, index);
 }
 
 export {

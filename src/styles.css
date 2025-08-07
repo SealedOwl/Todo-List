@@ -9,6 +9,9 @@
 	--textColor: #eaebec;
 	--darkGreen: #2abd6770;
 	--green: #1f8d4d;
+	--orange: #ff8903;
+	--yellow: #ffdf20;
+	--blue: oklch(82.8% 0.111 230.318);
 }
 
 * {
@@ -161,4 +164,69 @@ header {
 	font-size: var(--xl);
 	font-weight: 600;
 	margin-top: 1em;
+}
+
+/* Task cards  */
+
+.task-card {
+	border: 1px solid var(--textColor);
+	margin: 1.5em 0;
+	border-radius: 1px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1em 1em;
+	cursor: pointer;
+	font-weight: 600;
+}
+
+.task-card:hover {
+	background-color: var(--bgColor1);
+}
+
+.unchecked {
+	border: 2px solid var(--textColor);
+	width: 15px;
+	height: 15px;
+	border-radius: 50%;
+}
+
+.task-card-left,
+.task-card-right {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.due-date,
+.details {
+	padding: 5px;
+	border: 1px solid var(--textColor);
+	border-radius: 10px;
+}
+
+.mark-important,
+.more-option {
+	font-size: 1.5rem;
+}
+
+.mark-important:hover {
+	background-color: var(--bgColorPopUp);
+}
+
+.high-priority {
+	border: 1px solid var(--orange);
+}
+
+.medium-priority {
+	border: 1px solid var(--yellow);
+}
+
+.small-priority {
+	border: 1px solid var(--blue);
+}
+
+.completed {
+	border: 1px solid var(--green) !important;
+	text-decoration: line-through;
 }

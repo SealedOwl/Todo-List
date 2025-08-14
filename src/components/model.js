@@ -8,7 +8,7 @@ function createProject(name) {
 	}
 }
 
-function addTasks(projectName, taskObj) {
+function addTask(projectName, taskObj) {
 	if (projects[projectName]) {
 		projects[projectName].push(taskObj);
 	}
@@ -22,10 +22,12 @@ function getAllProjects() {
 	return Object.keys(projects);
 }
 
-function deleteTask(projectName, index) {
+function deleteTask(projectName, taskId) {
 	if (projects[projectName]) {
-		projects[projectName].splice(index, 1);
+		projects[projectName] = projects[projectName].filter(
+			(task) => task.id !== taskId
+		);
 	}
 }
 
-export { createProject, addTasks, getTasks, getAllProjects, deleteTask };
+export { createProject, addTask, getTasks, getAllProjects, deleteTask };

@@ -1,6 +1,6 @@
 import {
 	createProject,
-	addTasks,
+	addTask,
 	getTasks,
 	getAllProjects,
 	deleteTask,
@@ -11,9 +11,9 @@ function handleCreateProject(name) {
 	createProject(name);
 }
 
-function handleAddTasks(projectName, taskObj) {
+function handleAddTask(projectName, taskObj) {
 	if (!taskObj.title.trim()) return;
-	addTasks(projectName, taskObj);
+	addTask(projectName, taskObj);
 }
 
 function handleGetTasks(projectName) {
@@ -25,13 +25,13 @@ function handleGetAllProjects() {
 	return getAllProjects();
 }
 
-function handleDeleteTask(projectName, index) {
-	deleteTask(projectName, index);
+function handleDeleteTask(projectName, taskId) {
+	deleteTask(projectName, taskId);
 }
 
 export {
 	handleCreateProject,
-	handleAddTasks,
+	handleAddTask,
 	handleGetTasks,
 	handleGetAllProjects,
 	handleDeleteTask,

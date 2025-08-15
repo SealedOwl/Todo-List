@@ -25,17 +25,9 @@ export default function createSidebar() {
 
 	projectSection.innerHTML = `
     <h3>Projects</h3>
-    <div class="projects-list">
-        <div class="project-card">
-            <div class="project-info">
-                <i class="project-icon  fa-solid fa-bars"></i>
-                <div class="project-name">Study</div>
-            </div>
-            <div .more-option>
-            <i class="fa-solid fa-ellipsis-vertical"></i>
-            </div>
-        </div>  
+    <div class="projects-list">      
     </div>
+    <div class="project-form"></div>
     <button class="add-project" data-action="add-project"><img src="${addIcon}" alt="Add Project" /> Add Project </button>
     `;
 

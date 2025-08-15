@@ -23,10 +23,23 @@ function createProjectCard(project) {
     <div class="project-name">${project}</div>
     `;
 	//Right Section
-	const moreOption = createElement("div", ["more-option"]);
+	const moreOption = createElement("div", ["project-more-option"]);
 	moreOption.innerHTML = `<i class="fa-solid fa-ellipsis-vertical"></i>`;
 
+	const optionsList = createElement("div", ["project-options-list"]);
+
+	const renameBtn = createElement("button", ["options-item"], "Rename");
+	renameBtn.dataset.action = "rename";
+
+	const dltBtn = createElement("button", ["options-item"], "Delete");
+	dltBtn.dataset.action = "delete";
+
 	// Append
+
+	optionsList.appendChild(renameBtn);
+	optionsList.appendChild(dltBtn);
+	moreOption.appendChild(optionsList);
+
 	projectCard.appendChild(projectInfo);
 	projectCard.appendChild(moreOption);
 

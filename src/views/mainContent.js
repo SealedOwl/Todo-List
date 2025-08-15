@@ -1,3 +1,5 @@
+import addIcon from "../assets/add-circle.svg";
+
 export default function createMainContent() {
 	const main = document.createElement("main");
 	main.classList.add("main-content");
@@ -17,8 +19,20 @@ export default function createMainContent() {
 	noTask.textContent = "Yay! No Tasks!";
 	taskLists.appendChild(noTask);
 
+	const taskForm = document.createElement("div");
+	taskForm.classList.add("task-form");
+
+	const addTaskBtn = document.createElement("button");
+	addTaskBtn.classList.add("add-task");
+	addTaskBtn.dataset.action = "add-task";
+	addTaskBtn.innerHTML = `<img src="${addIcon}" alt="Add Task" /> Add Task `;
+
+	// <button class="add-task" data-action="add-project"><img src="${addIcon}" alt="Add Project" /> Add Project </button>
+
 	main.appendChild(taskName);
 	main.appendChild(taskLists);
+	main.appendChild(taskForm);
+	main.appendChild(addTaskBtn);
 
 	return main;
 }

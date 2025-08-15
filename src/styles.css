@@ -267,6 +267,33 @@ header {
 	background-color: var(--bgColor1);
 }
 
+/* Add Task Button  */
+
+.add-task {
+	color: var(--textColor);
+	font-size: 1.1rem;
+	background-color: transparent;
+	border: none;
+	border-radius: 1px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	padding: 0.5em 0 0.5em 3em;
+	gap: 1.5em;
+	cursor: pointer;
+	font-weight: 500;
+}
+
+.add-task > img {
+	width: 30px;
+	height: auto;
+	filter: invert(1);
+}
+
+.add-task:hover {
+	background-color: var(--bgColor1);
+}
+
 /* Project cards */
 
 .projects-list {
@@ -296,4 +323,47 @@ header {
 
 .project-icon {
 	font-size: 1rem;
+}
+
+/* Project Options  */
+
+.project-more-option {
+	position: relative;
+}
+
+.project-options-list {
+	padding: 5px;
+	display: none;
+	flex-direction: column;
+	background-color: var(--bgColorPopUp);
+	position: absolute;
+	bottom: 35px;
+	right: 5px;
+	border-radius: 5px;
+}
+
+.project-options-list.active-project-options {
+	display: flex !important;
+}
+
+.project-options-list > .options-item {
+	width: 100%;
+	font-size: 1.1rem;
+	text-align: left;
+	padding: 10px;
+	cursor: pointer;
+	border: none;
+	color: var(--textColor);
+	background-color: transparent;
+	border-radius: 5px;
+}
+
+.project-options-list > .options-item:hover {
+	background-color: var(--bgColor1);
+}
+
+/* Project Form  */
+
+.project-form {
+	display: none;
 }

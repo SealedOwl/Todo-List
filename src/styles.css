@@ -11,6 +11,7 @@
 	--green: #1f8d4d;
 	--orange: #ff8903;
 	--yellow: #ffdf20;
+	--red: #be0404;
 	--blue: oklch(82.8% 0.111 230.318);
 }
 
@@ -364,6 +365,64 @@ header {
 
 /* Project Form  */
 
-.project-form {
+/* .project-form {
 	display: none;
+	transform: scaleY(0);
+} */
+
+.project-form > form {
+	display: flex;
+	flex-direction: column;
+	border-radius: 5px;
+	gap: 10px;
+	cursor: pointer;
+}
+
+.project-form:hover {
+	background-color: var(--bgColorPopUp);
+}
+
+.project-input-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 5px 1.2em;
+	gap: 0.5em;
+}
+
+.project-input-container > input {
+	width: 100%;
+	font-size: 1.1rem;
+	padding: 0.3em 10px;
+	border-radius: 3px;
+}
+
+.projectForm-btn-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0.5em;
+	margin-bottom: 1em;
+}
+
+.projectForm-btn {
+	font-size: 1rem;
+	font-weight: 600;
+	padding: 0.3em 1em;
+	cursor: pointer;
+	color: var(--textColor);
+	border: none;
+	border-radius: 3px;
+}
+
+.projectForm-btn[data-action="add"] {
+	background-color: var(--green);
+}
+
+.projectForm-btn[data-action="cancel"] {
+	background-color: var(--red);
+}
+
+.projectForm-btn:hover {
+	opacity: 0.9;
 }

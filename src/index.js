@@ -2,6 +2,7 @@ import "./styles.css";
 
 import { renderApp, renderTasksFor } from "./components/view";
 import { renderProjectCards } from "./views/projectCard";
+import { renderProjectForm } from "./views/projectForm";
 
 import {
 	handleCreateProject,
@@ -10,6 +11,7 @@ import {
 	handleGetAllProjects,
 	handleDeleteTask,
 } from "./components/controller";
+
 import { getAllProjects } from "./components/model";
 
 renderApp();
@@ -42,3 +44,5 @@ console.log(handleGetAllProjects());
 const projects = getAllProjects();
 renderProjectCards(projects);
 renderTasksFor("Study");
+
+renderProjectForm();

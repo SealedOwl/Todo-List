@@ -3,6 +3,7 @@ import "./styles.css";
 import { renderApp, renderTasksFor } from "./components/view";
 import { renderProjectCards } from "./views/projectCard";
 import { renderProjectForm } from "./views/projectForm";
+import { renderTaskForm } from "./views/taskForm";
 
 import {
 	handleCreateProject,
@@ -45,4 +46,7 @@ const projects = getAllProjects();
 renderProjectCards(projects);
 renderTasksFor("Study");
 
+// Testing
+
 renderProjectForm();
+renderTaskForm();

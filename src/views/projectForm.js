@@ -16,7 +16,7 @@ export function renderProjectForm() {
 
 	buttonsContainer.innerHTML = `
     <button type="submit" class="projectForm-btn" data-action = "add" >Add</button>
-    <button type="cancel" class="projectForm-btn" data-action = "cancel" >Cancel</button>
+    <button type="reset" class="projectForm-btn" data-action = "cancel" >Cancel</button>
     `;
 
 	form.appendChild(inputContainer);

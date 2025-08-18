@@ -81,7 +81,7 @@ header {
 .sidebar-section {
 	display: flex;
 	flex-direction: column;
-	gap: 1em;
+	/* gap: 1em; */
 }
 
 .sidebar-section > h3 {
@@ -98,6 +98,7 @@ header {
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
+	margin-top: 1em;
 }
 
 .nav button {
@@ -306,6 +307,7 @@ header {
 	flex-direction: column;
 	font-size: 1.2rem;
 	font-weight: 600;
+	margin: 1em 0 0.5em 0;
 }
 
 .project-card {
@@ -369,10 +371,9 @@ header {
 
 /* Project Form  */
 
-.project-form {
+/* .project-form {
 	display: none;
-	transform: scaleY(0);
-}
+} */
 
 .project-form > form {
 	display: flex;
@@ -409,7 +410,8 @@ header {
 	margin-bottom: 1em;
 }
 
-.projectForm-btn {
+.projectForm-btn,
+.taskForm-btn {
 	font-size: 1rem;
 	font-weight: 600;
 	padding: 0.3em 1em;
@@ -419,22 +421,28 @@ header {
 	border-radius: 3px;
 }
 
-.projectForm-btn[data-action="add"] {
+.projectForm-btn[data-action="add"],
+.taskForm-btn[data-action="add"] {
 	background-color: var(--green);
 }
 
-.projectForm-btn[data-action="cancel"] {
+.projectForm-btn[data-action="cancel"],
+.taskForm-btn[data-action="cancel"] {
 	background-color: var(--red);
 }
 
-.projectForm-btn:hover {
+.projectForm-btn:hover,
+.taskForm-btn:hover {
 	opacity: 0.9;
 }
 
 /* Task Form  */
 
+/* .task-form {
+	display: none;
+} */
+
 .task-form > form {
-	/* display: none; */
 	background-color: var(--bgColor1);
 	font-size: 1.2rem;
 	padding: 1em 1em 5px 1em;
@@ -460,4 +468,22 @@ textarea {
 
 .task-input-container ~ .projectForm-btn-container {
 	margin: 1em 0;
+}
+
+/* Project form and Task form toggle styles  */
+
+.project-form,
+.task-form {
+	max-height: 0;
+	transform: scaleY(0);
+	opacity: 0;
+	transform-origin: top;
+	transition: transform 0.3s ease, opacity 0.3s ease, max-height 0.3s ease;
+}
+
+.project-form.visible,
+.task-form.visible {
+	max-height: 500px;
+	transform: scaleY(1);
+	opacity: 1;
 }

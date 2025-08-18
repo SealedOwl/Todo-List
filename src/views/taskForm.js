@@ -15,8 +15,8 @@ export function renderTaskForm() {
         <input type="date" name="task-date" id="task-date" />
     </div>
     <div class="projectForm-btn-container">
-        <button type="submit" class="projectForm-btn" data-action = "add" >Add</button>
-        <button type="cancel" class="projectForm-btn" data-action = "cancel" >Cancel</button>
+        <button type="submit" class="taskForm-btn" data-action = "add" >Add</button>
+        <button type="reset" class="taskForm-btn" data-action = "cancel" >Cancel</button>
     </div>
     `;
 

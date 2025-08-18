@@ -27,8 +27,6 @@ export default function createMainContent() {
 	addTaskBtn.dataset.action = "add-task";
 	addTaskBtn.innerHTML = `<img src="${addIcon}" alt="Add Task" /> Add Task `;
 
-	// <button class="add-task" data-action="add-project"><img src="${addIcon}" alt="Add Project" /> Add Project </button>
-
 	main.appendChild(taskName);
 	main.appendChild(taskLists);
 	main.appendChild(taskForm);

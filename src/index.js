@@ -14,7 +14,11 @@ import {
 } from "./components/controller";
 
 import { getAllProjects } from "./components/model";
-import { initTaskFormEvents, initProjectFormEvents } from "./components/events";
+import {
+	initTaskFormEvents,
+	initProjectFormEvents,
+	initProjectOptionsEvents,
+} from "./components/events";
 
 renderApp();
 
@@ -53,3 +57,4 @@ renderProjectForm();
 renderTaskForm();
 initTaskFormEvents();
 initProjectFormEvents();
+initProjectOptionsEvents();

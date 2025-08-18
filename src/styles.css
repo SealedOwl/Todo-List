@@ -340,17 +340,23 @@ header {
 
 .project-options-list {
 	padding: 5px;
-	display: none;
 	flex-direction: column;
 	background-color: var(--bgColorPopUp);
 	position: absolute;
 	bottom: 35px;
 	right: 5px;
 	border-radius: 5px;
+	max-height: 0;
+	opacity: 0;
+	transform-origin: bottom;
+	transform: scaleY(0);
+	transition: all 0.2s ease;
 }
 
-.project-options-list.active-project-options {
-	display: flex !important;
+.project-options-list.visible {
+	max-height: 100px;
+	transform: scaleY(1);
+	opacity: 1;
 }
 
 .project-options-list > .options-item {
@@ -370,10 +376,6 @@ header {
 }
 
 /* Project Form  */
-
-/* .project-form {
-	display: none;
-} */
 
 .project-form > form {
 	display: flex;
@@ -437,10 +439,6 @@ header {
 }
 
 /* Task Form  */
-
-/* .task-form {
-	display: none;
-} */
 
 .task-form > form {
 	background-color: var(--bgColor1);

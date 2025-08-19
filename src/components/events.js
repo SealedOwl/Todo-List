@@ -1,57 +1,46 @@
+import { initFormToggle } from "../utils/formToggleHelper";
 import { initOptionsDropdownToggle } from "../utils/optionsDropdownHelper";
 
 export function initTaskFormEvents() {
-	const $addTaskBtn = document.querySelector(".add-task");
-	const $taskForm = document.querySelector(".task-form");
-	const $cancelBtn = document.querySelector(
-		".taskForm-btn[data-action='cancel']"
-	);
-	const $submitBtn = document.querySelector(".taskForm-btn[data-action='add']");
+	// Keeping these commented for future reference
 
-	$addTaskBtn.addEventListener("click", () => {
-		toggleForm(true, $taskForm);
-	});
+	// const $addTaskBtn = document.querySelector(".add-task");
+	// const $taskForm = document.querySelector(".task-form");
+	// const $cancelBtn = document.querySelector(
+	// 	".taskForm-btn[data-action='cancel']"
+	// );
+	// const $submitBtn = document.querySelector(".taskForm-btn[data-action='add']");
 
-	$cancelBtn.addEventListener("click", () => {
-		toggleForm(false, $taskForm);
-	});
+	// $addTaskBtn.addEventListener("click", () => {
+	// 	toggleForm(true, $taskForm);
+	// });
 
-	$submitBtn.addEventListener("click", (e) => {
-		e.preventDefault();
-		toggleForm(false, $taskForm);
+	// $cancelBtn.addEventListener("click", () => {
+	// 	toggleForm(false, $taskForm);
+	// });
+
+	// $submitBtn.addEventListener("click", (e) => {
+	// 	e.preventDefault();
+	// 	toggleForm(false, $taskForm);
+	// });
+
+	// Refactored above to helper:
+
+	initFormToggle({
+		addBtnSelector: ".add-task",
+		formSelector: ".task-form",
+		cancelBtnSelector: '.taskForm-btn[data-action="cancel"]',
+		submitBtnSelector: '.taskForm-btn[data-action="add"]',
 	});
 }
 
 export function initProjectFormEvents() {
-	const $addProjectBtn = document.querySelector(".add-project");
-	const $projectForm = document.querySelector(".project-form");
-	const $cancelBtn = document.querySelector(
-		".projectForm-btn[data-action='cancel']"
-	);
-	const $submitBtn = document.querySelector(
-		".projectForm-btn[data-action='add']"
-	);
-
-	$addProjectBtn.addEventListener("click", () => {
-		toggleForm(true, $projectForm);
+	initFormToggle({
+		addBtnSelector: ".add-project",
+		formSelector: ".project-form",
+		cancelBtnSelector: '.projectForm-btn[data-action="cancel"]',
+		submitBtnSelector: '.projectForm-btn[data-action="add"]',
 	});
-
-	$cancelBtn.addEventListener("click", () => {
-		toggleForm(false, $projectForm);
-	});
-
-	$submitBtn.addEventListener("click", (e) => {
-		e.preventDefault();
-		toggleForm(false, $projectForm);
-	});
-}
-
-function toggleForm(show, form) {
-	if (show) {
-		form.classList.add("visible");
-	} else {
-		form.classList.remove("visible");
-	}
 }
 
 export function initProjectOptionsEvents() {

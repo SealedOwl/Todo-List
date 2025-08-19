@@ -1,3 +1,5 @@
+import { initOptionsDropdownToggle } from "../utils/optionsDropdownHelper";
+
 export function initTaskFormEvents() {
 	const $addTaskBtn = document.querySelector(".add-task");
 	const $taskForm = document.querySelector(".task-form");
@@ -53,36 +55,17 @@ function toggleForm(show, form) {
 }
 
 export function initProjectOptionsEvents() {
-	const $projectsList = document.querySelector(".projects-list");
+	initOptionsDropdownToggle(
+		".projects-list",
+		".project-more-option",
+		".project-options-list"
+	);
+}
 
-	$projectsList.addEventListener("click", (e) => {
-		const $moreOptions = e.target.closest(".project-more-option");
-
-		if (!$moreOptions) return;
-
-		const $panel = $moreOptions.querySelector(".project-options-list");
-
-		const isVisible = $panel.classList.contains("visible");
-
-		// Remove all other .active
-
-		$projectsList
-			.querySelectorAll(".project-options-list.visible")
-			.forEach((panel) => {
-				panel.classList.remove("visible");
-			});
-
-		if (!isVisible) {
-			$panel.classList.add("visible");
-		}
-
-		// Remove .active if clicked anywhere else
-		document.addEventListener("click", (e) => {
-			const $isInsideMoreOptions = e.target.closest(".project-more-option");
-
-			if (!$isInsideMoreOptions) {
-				$panel.classList.remove("visible");
-			}
-		});
-	});
+export function initTaskOptionsEvents() {
+	initOptionsDropdownToggle(
+		".task-lists",
+		".task-more-option",
+		".task-options-list"
+	);
 }

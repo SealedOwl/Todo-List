@@ -239,26 +239,33 @@ header {
 
 /* Task options  */
 
-.more-option {
+.task-more-option {
 	position: relative;
 }
 
 .task-options-list {
 	padding: 5px;
-	display: none;
 	flex-direction: column;
 	background-color: var(--bgColorPopUp);
 	position: absolute;
 	bottom: 35px;
 	right: 5px;
 	border-radius: 5px;
+	max-height: 0;
+	opacity: 0;
+	transform-origin: bottom;
+	transform: scaleY(0);
+	transition: all 0.2s ease;
 }
 
-.task-options-list.active-task-options {
-	display: flex !important;
+.task-options-list.visible {
+	max-height: 100px;
+	transform: scaleY(1);
+	opacity: 1;
 }
 
 .options-item {
+	width: 100%;
 	font-size: 1.1rem;
 	text-align: left;
 	padding: 10px;

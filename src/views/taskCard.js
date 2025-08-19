@@ -34,7 +34,7 @@ function createTaskCard(task) {
 	important.innerHTML = `<i class="fa-regular fa-star"></i>`;
 
 	// Options
-	const moreOption = createElement("div", ["more-option"]);
+	const moreOption = createElement("div", ["task-more-option"]);
 	moreOption.innerHTML = `<i class="fa-solid fa-ellipsis-vertical"></i>`;
 
 	const optionsList = createElement("div", ["task-options-list"]);

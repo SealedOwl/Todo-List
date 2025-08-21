@@ -1,5 +1,7 @@
 import {
 	createProject,
+	deleteProject,
+	renameProject,
 	addTask,
 	getTasks,
 	getAllProjects,
@@ -15,6 +17,18 @@ function handleCreateProject(name) {
 
 	const projects = getAllProjects();
 
+	renderProjectCards(projects);
+}
+
+function handleDeleteProject(projectName) {
+	deleteProject(projectName);
+	const projects = getAllProjects();
+	renderProjectCards(projects);
+}
+
+function handleRenameProject(oldName, newName) {
+	renameProject(oldName, newName);
+	const projects = getAllProjects();
 	renderProjectCards(projects);
 }
 
@@ -38,6 +52,8 @@ function handleDeleteTask(projectName, taskId) {
 
 export {
 	handleCreateProject,
+	handleDeleteProject,
+	handleRenameProject,
 	handleAddTask,
 	handleGetTasks,
 	handleGetAllProjects,

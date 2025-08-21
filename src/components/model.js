@@ -8,6 +8,19 @@ function createProject(name) {
 	}
 }
 
+function deleteProject(projectName) {
+	if (projectName) {
+		delete projects[projectName];
+	}
+}
+
+function renameProject(oldName, newName) {
+	if (projects[oldName] && !projects[newName]) {
+		projects[newName] = projects[oldName]; // Move tasks
+		delete projects[oldName];
+	}
+}
+
 function addTask(projectName, taskObj) {
 	if (projects[projectName]) {
 		projects[projectName].push(taskObj);
@@ -30,4 +43,12 @@ function deleteTask(projectName, taskId) {
 	}
 }
 
-export { createProject, addTask, getTasks, getAllProjects, deleteTask };
+export {
+	createProject,
+	deleteProject,
+	renameProject,
+	addTask,
+	getTasks,
+	getAllProjects,
+	deleteTask,
+};

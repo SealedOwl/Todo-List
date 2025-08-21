@@ -1,36 +1,25 @@
 import { initFormToggle } from "../utils/formToggleHelper";
 import { initOptionsDropdownToggle } from "../utils/optionsDropdownHelper";
+import { handleCreateProject } from "./controller";
 
 export function initTaskFormEvents() {
-	// Keeping these commented for future reference
-
-	// const $addTaskBtn = document.querySelector(".add-task");
-	// const $taskForm = document.querySelector(".task-form");
-	// const $cancelBtn = document.querySelector(
-	// 	".taskForm-btn[data-action='cancel']"
-	// );
-	// const $submitBtn = document.querySelector(".taskForm-btn[data-action='add']");
-
-	// $addTaskBtn.addEventListener("click", () => {
-	// 	toggleForm(true, $taskForm);
-	// });
-
-	// $cancelBtn.addEventListener("click", () => {
-	// 	toggleForm(false, $taskForm);
-	// });
-
-	// $submitBtn.addEventListener("click", (e) => {
-	// 	e.preventDefault();
-	// 	toggleForm(false, $taskForm);
-	// });
-
-	// Refactored above to helper:
-
 	initFormToggle({
 		addBtnSelector: ".add-task",
 		formSelector: ".task-form",
 		cancelBtnSelector: '.taskForm-btn[data-action="cancel"]',
 		submitBtnSelector: '.taskForm-btn[data-action="add"]',
+	});
+
+	// handle project form submit
+	const $projectForm = document.querySelector(".project-form form");
+
+	$projectForm.addEventListener("submit", (e) => {
+		e.preventDefault();
+		const $input = document.querySelector(".project-input");
+		const projectName = $input.value.trim();
+
+		handleCreateProject(projectName);
+		$input.value = "";
 	});
 }
 

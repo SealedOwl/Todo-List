@@ -18,7 +18,6 @@ export function initFormToggle({
 	});
 
 	$submitBtn.addEventListener("click", (e) => {
-		e.preventDefault();
 		toggleForm(false, $form);
 	});
 }
@@ -26,6 +25,10 @@ export function initFormToggle({
 function toggleForm(show, form) {
 	if (show) {
 		form.classList.add("visible");
+
+		// Auto-focus on first input
+		const $firstInput = form.querySelector("input");
+		$firstInput.focus();
 	} else {
 		form.classList.remove("visible");
 	}

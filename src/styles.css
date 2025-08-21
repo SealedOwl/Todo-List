@@ -280,6 +280,10 @@ header {
 	background-color: var(--bgColor1);
 }
 
+.task-more-option:hover {
+	background-color: var(--bgColor3);
+}
+
 /* Add Task Button  */
 
 .add-task {
@@ -382,6 +386,9 @@ header {
 	background-color: var(--bgColor1);
 }
 
+.project-more-option:hover {
+	background-color: var(--bgColor1);
+}
 /* Project Form  */
 
 .project-form > form {

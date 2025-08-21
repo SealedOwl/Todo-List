@@ -6,9 +6,16 @@ import {
 	deleteTask,
 } from "./model";
 
+import { renderProjectCards } from "../views/projectCard";
+
 function handleCreateProject(name) {
 	if (!name.trim()) return;
+
 	createProject(name);
+
+	const projects = getAllProjects();
+
+	renderProjectCards(projects);
 }
 
 function handleAddTask(projectName, taskObj) {

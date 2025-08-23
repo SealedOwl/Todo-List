@@ -389,9 +389,11 @@ header {
 .project-more-option:hover {
 	background-color: var(--bgColor1);
 }
+
 /* Project Form  */
 
-.project-form > form {
+.project-form > form,
+.project-card > form {
 	display: flex;
 	flex-direction: column;
 	border-radius: 5px;
@@ -399,7 +401,8 @@ header {
 	cursor: pointer;
 }
 
-.project-form:hover {
+.project-form:hover,
+.project-card > form:hover {
 	background-color: var(--bgColorPopUp);
 }
 
@@ -411,7 +414,15 @@ header {
 	gap: 0.5em;
 }
 
-.project-input-container > input {
+.project-rename-input-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5em;
+}
+
+.project-input-container > input,
+.project-rename-input-container > input {
 	width: 100%;
 	font-size: 1.1rem;
 	padding: 0.3em 10px;
@@ -438,7 +449,8 @@ header {
 }
 
 .projectForm-btn[data-action="add"],
-.taskForm-btn[data-action="add"] {
+.taskForm-btn[data-action="add"],
+.projectForm-btn[data-action="rename"] {
 	background-color: var(--green);
 }
 

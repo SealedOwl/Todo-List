@@ -14,6 +14,7 @@ export function renderProjectCards(projects) {
 
 function createProjectCard(project) {
 	const projectCard = createElement("div", ["project-card"]);
+	projectCard.dataset.project = project;
 
 	// Left section
 	const projectInfo = createElement("div", ["project-info"]);

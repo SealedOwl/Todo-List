@@ -39,9 +39,9 @@ handleAddTask("Study", {
 handleAddTask("Study", {
 	id: crypto.randomUUID(),
 	title: "Cloud computing",
-	dueDate: "2025-08-15",
 	details: "Coursera course",
 	priority: "medium",
+	dueDate: "2025-08-15",
 	important: true,
 });
 

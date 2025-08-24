@@ -9,6 +9,8 @@ import {
 } from "./model";
 
 import { renderProjectCards } from "../views/projectCard";
+import { renderTaskCards } from "../views/taskCard";
+import { renderTasksFor } from "./view";
 
 function handleCreateProject(name) {
 	if (!name.trim()) return;
@@ -35,10 +37,11 @@ function handleRenameProject(oldName, newName) {
 function handleAddTask(projectName, taskObj) {
 	if (!taskObj.title.trim()) return;
 	addTask(projectName, taskObj);
+
+	renderTasksFor(projectName);
 }
 
 function handleGetTasks(projectName) {
-	if (!projectName.trim()) return;
 	return getTasks(projectName);
 }
 

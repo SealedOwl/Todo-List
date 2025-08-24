@@ -7,16 +7,10 @@ import {
 	handleCreateProject,
 	handleDeleteProject,
 	handleRenameProject,
+	handleAddTask,
 } from "./controller";
 
-export function initTaskFormEvents() {
-	initFormToggle({
-		addBtnSelector: ".add-task",
-		formSelector: ".task-form",
-		cancelBtnSelector: '.taskForm-btn[data-action="cancel"]',
-		submitBtnSelector: '.taskForm-btn[data-action="add"]',
-	});
-}
+import { format, parseISO, isValid } from "date-fns";
 
 export function initProjectFormEvents() {
 	initFormToggle({
@@ -101,6 +95,52 @@ function handleProjectRenameOption($projectCard, oldName) {
 
 	$cancelBtn.addEventListener("click", () => {
 		renderProjectCards(handleGetAllProjects());
+	});
+}
+
+export function initTaskFormEvents() {
+	initFormToggle({
+		addBtnSelector: ".add-task",
+		formSelector: ".task-form",
+		cancelBtnSelector: '.taskForm-btn[data-action="cancel"]',
+		submitBtnSelector: '.taskForm-btn[data-action="add"]',
+	});
+
+	// handle task form submit
+	const $taskForm = document.querySelector(".task-form form");
+
+	const $currentProject = "Study";
+
+	$taskForm.addEventListener("submit", (e) => {
+		e.preventDefault();
+
+		const $title = $taskForm.querySelector("#task-title").value.trim();
+		const $details = $taskForm.querySelector("#task-details").value.trim();
+		const $priority = $taskForm.querySelector("#priority").value.trim();
+		const rawDate = $taskForm.querySelector("#task-date").value.trim();
+
+		let $date = "No Due Date";
+		if (rawDate) {
+			const parsed = parseISO(rawDate);
+			if (isValid(parsed)) {
+				$date = format(parsed, "dd-MM-yyyy");
+			}
+		}
+
+		const taskObj = {
+			id: crypto.randomUUID(),
+			title: $title,
+			details: $details,
+			priority: $priority,
+			dueDate: $date,
+			createdDate: format(new Date(), "dd-MM-yyyy"),
+			important: false,
+			completed: false,
+		};
+
+		handleAddTask($currentProject, taskObj);
+
+		$taskForm.reset();
 	});
 }
 

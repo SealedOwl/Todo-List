@@ -480,7 +480,8 @@ header {
 }
 
 .task-input-container > input,
-textarea {
+textarea,
+select {
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 	font-size: 1rem;
 	padding: 10px 5px;

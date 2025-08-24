@@ -18,6 +18,7 @@ export function initFormToggle({
 	});
 
 	$submitBtn.addEventListener("click", (e) => {
+		// e.preventDefault();
 		toggleForm(false, $form);
 	});
 }

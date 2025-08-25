@@ -19,6 +19,7 @@ import {
 	initProjectFormEvents,
 	initProjectOptionsEvents,
 	initTaskOptionsEvents,
+	initProjectSelection,
 } from "./components/events";
 
 renderApp();
@@ -60,3 +61,4 @@ initTaskFormEvents();
 initProjectFormEvents();
 initProjectOptionsEvents();
 initTaskOptionsEvents();
+initProjectSelection();

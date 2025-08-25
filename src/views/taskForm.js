@@ -8,7 +8,7 @@ export function renderTaskForm() {
 	form.innerHTML = `
     <div class="task-input-container">
         <label for="task-title">Title:</label>
-        <input type="text" name="task-title" id="task-title" placeholder="What to do?" maxlength="24" />
+        <input type="text" name="task-title" id="task-title" placeholder="What to do?" maxlength="24" autocomplete="off" />
         <label for="task-details">Details(optional):</label>
         <textarea name="task-details" id="task-details" wrap="hard" placeholder="Eg: I'm just gonna procrastinate, aren't I?"></textarea>
         <label for="priority">Priority: </label>

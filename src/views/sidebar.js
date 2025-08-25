@@ -13,12 +13,12 @@ export default function createSidebar() {
 
 	homeSection.innerHTML = `
     <h3>Home</h3>
-    <nav class="nav">
+    <nav class="nav home-section">
     <button id="allTask" class="nav-btn active"><img src="${allTaskIcon}" alt="All Tasks" />All Tasks </button>
     <button id="todayTask" class="nav-btn"><img src="${todayIcon}" alt="Today" />Today </button>
     <button id="weekTask" class="nav-btn"><img src="${weekIcon}" alt="Next 7 Days" />Next 7 Days </button>
     <button id="importantTask" class="nav-btn"><img src="${importantIcon}" alt="Important" />Important </button>
-    <nav>
+    </nav>
     `;
 
 	const projectSection = createElement("div", ["sidebar-section"]);

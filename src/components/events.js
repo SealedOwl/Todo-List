@@ -8,9 +8,12 @@ import {
 	handleDeleteProject,
 	handleRenameProject,
 	handleAddTask,
+	setCurrentProject,
+	getCurrentProject,
 } from "./controller";
 
 import { format, parseISO, isValid } from "date-fns";
+import { renderTasksFor } from "./view";
 
 export function initProjectFormEvents() {
 	initFormToggle({
@@ -150,4 +153,44 @@ export function initTaskOptionsEvents() {
 		".task-more-option",
 		".task-options-list"
 	);
+}
+
+export function initProjectSelection() {
+	const $projectsList = document.querySelector(".projects-list");
+	const $homeSectionProjects = document.querySelector(".home-section");
+
+	if (!$projectsList || !$homeSectionProjects) return;
+
+	$projectsList.addEventListener("click", (e) => {
+		const $card = e.target.closest(".project-card");
+
+		if (!$card) return;
+
+		clearActive();
+		$card.classList.add("active");
+
+		const projectName = $card.dataset.project;
+		setCurrentProject(projectName);
+
+		renderTasksFor(projectName);
+	});
+
+	$homeSectionProjects.addEventListener("click", (e) => {
+		const $tile = e.target.closest("button");
+
+		if (!$tile) return;
+
+		clearActive();
+		$tile.classList.add("active");
+
+		const projectName = $tile.id;
+		setCurrentProject(projectName);
+
+		// renderTasksFor(projectName);
+	});
+}
+
+function clearActive() {
+	const currentActive = document.querySelector(".active");
+	currentActive.classList.remove("active");
 }

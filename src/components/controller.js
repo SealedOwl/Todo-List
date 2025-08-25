@@ -9,8 +9,17 @@ import {
 } from "./model";
 
 import { renderProjectCards } from "../views/projectCard";
-import { renderTaskCards } from "../views/taskCard";
 import { renderTasksFor } from "./view";
+
+let currentProject = "allTask";
+
+function setCurrentProject(projectName) {
+	currentProject = projectName;
+}
+
+function getCurrentProject() {
+	return currentProject;
+}
 
 function handleCreateProject(name) {
 	if (!name.trim()) return;
@@ -61,4 +70,6 @@ export {
 	handleGetTasks,
 	handleGetAllProjects,
 	handleDeleteTask,
+	setCurrentProject,
+	getCurrentProject,
 };

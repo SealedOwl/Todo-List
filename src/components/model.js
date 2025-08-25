@@ -31,6 +31,10 @@ function getTasks(projectName) {
 	return projects[projectName] || [];
 }
 
+function getAllTasks() {
+	return Object.values(projects).flat();
+}
+
 function getAllProjects() {
 	return Object.keys(projects);
 }
@@ -51,4 +55,5 @@ export {
 	getTasks,
 	getAllProjects,
 	deleteTask,
+	getAllTasks,
 };

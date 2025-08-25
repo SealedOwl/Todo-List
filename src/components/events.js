@@ -13,7 +13,7 @@ import {
 } from "./controller";
 
 import { format, parseISO, isValid } from "date-fns";
-import { renderTasksFor } from "./view";
+import { renderTasksFor, renderTasksForHome } from "./view";
 
 export function initProjectFormEvents() {
 	initFormToggle({
@@ -136,7 +136,6 @@ export function initTaskFormEvents() {
 			details: $details,
 			priority: $priority,
 			dueDate: $date,
-			createdDate: format(new Date(), "dd-MM-yyyy"),
 			important: false,
 			completed: false,
 		};
@@ -163,14 +162,19 @@ export function initProjectSelection() {
 
 	$projectsList.addEventListener("click", (e) => {
 		const $card = e.target.closest(".project-card");
+		const $addTaskBtn = document.querySelector(".add-task");
 
 		if (!$card) return;
 
 		clearActive();
 		$card.classList.add("active");
+		$addTaskBtn.style.display = "flex";
 
 		const projectName = $card.dataset.project;
 		setCurrentProject(projectName);
+
+		const $title = document.querySelector(".task-name p");
+		if ($title) $title.textContent = projectName;
 
 		renderTasksFor(projectName);
 	});
@@ -186,11 +190,17 @@ export function initProjectSelection() {
 		const projectName = $tile.id;
 		setCurrentProject(projectName);
 
-		// renderTasksFor(projectName);
+		const $title = document.querySelector(".task-name p");
+		if ($title)
+			$title.textContent = document.querySelector(
+				`#${projectName}`
+			).textContent;
+
+		renderTasksForHome(projectName);
 	});
 }
 
 function clearActive() {
 	const currentActive = document.querySelector(".active");
-	currentActive.classList.remove("active");
+	if (currentActive) currentActive.classList.remove("active");
 }

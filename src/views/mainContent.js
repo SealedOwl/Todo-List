@@ -14,10 +14,10 @@ export default function createMainContent() {
 	const taskLists = document.createElement("div");
 	taskLists.classList.add("task-lists");
 
-	const noTask = document.createElement("p");
-	noTask.classList.add("no-task");
-	noTask.textContent = "Yay! No Tasks!";
-	taskLists.appendChild(noTask);
+	// const noTask = document.createElement("p");
+	// noTask.classList.add("no-task");
+	// noTask.textContent = "Yay! No Tasks!";
+	// taskLists.appendChild(noTask);
 
 	const taskForm = document.createElement("div");
 	taskForm.classList.add("task-form");

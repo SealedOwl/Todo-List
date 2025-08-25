@@ -31,7 +31,7 @@ handleCreateProject("Study");
 handleAddTask("Study", {
 	id: crypto.randomUUID(),
 	title: "Odin Project",
-	dueDate: "2025-08-05",
+	dueDate: "27-08-2025",
 	details: "Please dont procrastinate and study",
 	priority: "High",
 	important: true,
@@ -42,7 +42,7 @@ handleAddTask("Study", {
 	title: "Cloud computing",
 	details: "Coursera course",
 	priority: "medium",
-	dueDate: "2025-08-15",
+	dueDate: "15-08-2025",
 	important: true,
 });
 

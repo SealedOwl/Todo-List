@@ -60,6 +60,8 @@ function handleGetAllProjects() {
 
 function handleDeleteTask(projectName, taskId) {
 	deleteTask(projectName, taskId);
+	const currentProject = getCurrentProject();
+	renderTasksFor(currentProject, taskId);
 }
 
 export {

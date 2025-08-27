@@ -10,6 +10,7 @@ import {
 	handleAddTask,
 	setCurrentProject,
 	getCurrentProject,
+	handleDeleteTask,
 } from "./controller";
 
 import { format, parseISO, isValid } from "date-fns";
@@ -152,8 +153,33 @@ export function initTaskOptionsEvents() {
 		".task-more-option",
 		".task-options-list"
 	);
+
+	// Tasks edit and delete options
+	const $taskLists = document.querySelector(".task-lists");
+
+	$taskLists.addEventListener("click", (e) => {
+		const $taskCard = e.target.closest(".task-card");
+
+		if (!$taskCard) return;
+
+		const taskId = $taskCard.dataset.id;
+		const currentProject = getCurrentProject();
+
+		// Edit option
+
+		if (e.target.dataset.action === "edit") {
+			// handleTaskEditOption(projectName, taskId);
+		}
+
+		// Delete optiom
+
+		if (e.target.dataset.action === "delete") {
+			handleDeleteTask(currentProject, taskId);
+		}
+	});
 }
 
+// Render tasks for selected project
 export function initProjectSelection() {
 	const $projectsList = document.querySelector(".projects-list");
 	const $homeSectionProjects = document.querySelector(".home-section");

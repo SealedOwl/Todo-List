@@ -6,10 +6,11 @@ import {
 	getTasks,
 	getAllProjects,
 	deleteTask,
+	editTask,
 } from "./model";
 
 import { renderProjectCards } from "../views/projectCard";
-import { renderTasksFor } from "./view";
+import { renderTasksFor, renderTasksForHome } from "./view";
 
 let currentProject = "allTask";
 
@@ -58,10 +59,35 @@ function handleGetAllProjects() {
 	return getAllProjects();
 }
 
-function handleDeleteTask(projectName, taskId) {
-	deleteTask(projectName, taskId);
+function handleDeleteTask(taskId) {
+	deleteTask(taskId);
 	const currentProject = getCurrentProject();
-	renderTasksFor(currentProject, taskId);
+	if (
+		currentProject !== "allTask" &&
+		currentProject !== "todayTask" &&
+		currentProject !== "weekTask" &&
+		currentProject !== "importantTask"
+	) {
+		renderTasksFor(currentProject);
+	} else {
+		// Re-render Home sections properly
+		renderTasksForHome(currentProject);
+	}
+}
+
+function handleEditTask(taskId, newTaskObj) {
+	editTask(taskId, newTaskObj);
+	const currentProject = getCurrentProject();
+	if (
+		currentProject !== "allTask" &&
+		currentProject !== "todayTask" &&
+		currentProject !== "weekTask" &&
+		currentProject !== "importantTask"
+	) {
+		renderTasksFor(currentProject);
+	} else {
+		renderTasksForHome(currentProject);
+	}
 }
 
 export {
@@ -74,4 +100,5 @@ export {
 	handleDeleteTask,
 	setCurrentProject,
 	getCurrentProject,
+	handleEditTask,
 };

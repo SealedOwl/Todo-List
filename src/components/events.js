@@ -2,6 +2,7 @@ import { initFormToggle } from "../utils/formToggleHelper";
 import { initOptionsDropdownToggle } from "../utils/optionsDropdownHelper";
 import { renderProjectCards } from "../views/projectCard";
 import { enableProjectRenameMode } from "../views/projectRename";
+import { enableTaskEditMode } from "../views/taskEdit";
 import {
 	handleGetAllProjects,
 	handleCreateProject,
@@ -11,7 +12,11 @@ import {
 	setCurrentProject,
 	getCurrentProject,
 	handleDeleteTask,
+	handleGetTasks,
+	handleEditTask,
 } from "./controller";
+
+import { getAllTasks } from "./model";
 
 import { format, parseISO, isValid } from "date-fns";
 import { renderTasksFor, renderTasksForHome } from "./view";
@@ -163,18 +168,89 @@ export function initTaskOptionsEvents() {
 		if (!$taskCard) return;
 
 		const taskId = $taskCard.dataset.id;
-		const currentProject = getCurrentProject();
 
 		// Edit option
 
 		if (e.target.dataset.action === "edit") {
-			// handleTaskEditOption(projectName, taskId);
+			handleTaskEditOption($taskCard, taskId);
 		}
 
 		// Delete optiom
 
 		if (e.target.dataset.action === "delete") {
-			handleDeleteTask(currentProject, taskId);
+			handleDeleteTask(taskId);
+		}
+	});
+}
+
+function handleTaskEditOption(taskCard, taskId) {
+	// find the old task object from model
+	const currentProject = getCurrentProject();
+	let tasks = [];
+	if (
+		currentProject !== "allTask" &&
+		currentProject !== "todayTask" &&
+		currentProject !== "weekTask" &&
+		currentProject !== "importantTask"
+	) {
+		tasks = handleGetTasks(currentProject);
+	} else {
+		// home sections pull all tasks
+		tasks = getAllTasks();
+	}
+	const taskObj = tasks.find((t) => t.id === taskId);
+	if (!taskObj) return;
+
+	// replace card with edit form
+	enableTaskEditMode(taskCard, taskObj);
+
+	// wire form actions
+	const $taskEditForm = taskCard.querySelector(".task-edit-form");
+	if (!$taskEditForm) return;
+
+	const $editBtn = $taskEditForm.querySelector('[data-action="edit"]');
+	const $cancelBtn = $taskEditForm.querySelector('[data-action="cancel"]');
+
+	$editBtn.addEventListener("click", (e) => {
+		e.preventDefault();
+
+		const newTitle = $taskEditForm.querySelector("#task-title").value.trim();
+		const newDetails = $taskEditForm
+			.querySelector("#task-details")
+			.value.trim();
+		const newPriority = $taskEditForm.querySelector("#priority").value;
+		const rawDate = $taskEditForm.querySelector("#task-edit-date").value;
+
+		let formattedDate = "No Due Date";
+		if (rawDate) {
+			const parsed = parseISO(rawDate);
+			if (isValid(parsed)) {
+				formattedDate = format(parsed, "dd-MM-yyyy");
+			}
+		}
+
+		const updatedTask = {
+			title: newTitle,
+			details: newDetails,
+			priority: newPriority,
+			dueDate: formattedDate,
+		};
+
+		handleEditTask(taskId, updatedTask);
+	});
+
+	$cancelBtn.addEventListener("click", () => {
+		// just re-render the current project
+		const currentProject = getCurrentProject();
+		if (
+			currentProject !== "allTask" &&
+			currentProject !== "todayTask" &&
+			currentProject !== "weekTask" &&
+			currentProject !== "importantTask"
+		) {
+			renderTasksFor(currentProject);
+		} else {
+			renderTasksForHome(currentProject);
 		}
 	});
 }

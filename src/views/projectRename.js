@@ -1,9 +1,6 @@
 import { createElement } from "../utils/createElement";
 
 export function enableProjectRenameMode(projectCard, oldName) {
-	const existingForm = document.querySelector(".project-rename-form");
-	if (existingForm) return;
-
 	projectCard.innerHTML = "";
 
 	// create rename form

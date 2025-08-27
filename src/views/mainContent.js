@@ -26,6 +26,7 @@ export default function createMainContent() {
 	addTaskBtn.classList.add("add-task");
 	addTaskBtn.dataset.action = "add-task";
 	addTaskBtn.innerHTML = `<img src="${addIcon}" alt="Add Task" /> Add Task `;
+	addTaskBtn.style.display = "none"; //
 
 	main.appendChild(taskName);
 	main.appendChild(taskLists);

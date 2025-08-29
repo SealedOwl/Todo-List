@@ -69,6 +69,26 @@ function editTask(oldTaskId, newTaskObj) {
 	return false;
 }
 
+function toggleTaskComplete(taskId) {
+	let projectName = "";
+
+	for (const key in projects) {
+		const items = projects[key];
+
+		if (items.some((item) => item.id === taskId)) {
+			projectName = key;
+			break;
+		}
+	}
+
+	const tasks = projects[projectName];
+
+	const task = tasks.find((task) => task.id === taskId);
+	if (task) {
+		task.completed = !task.completed;
+	}
+}
+
 export {
 	createProject,
 	deleteProject,
@@ -79,4 +99,5 @@ export {
 	deleteTask,
 	editTask,
 	getAllTasks,
+	toggleTaskComplete,
 };

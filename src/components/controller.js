@@ -7,6 +7,7 @@ import {
 	getAllProjects,
 	deleteTask,
 	editTask,
+	toggleTaskComplete,
 } from "./model";
 
 import { renderProjectCards } from "../views/projectCard";
@@ -90,6 +91,20 @@ function handleEditTask(taskId, newTaskObj) {
 	}
 }
 
+function handleToggleTaskComplete(taskId) {
+	toggleTaskComplete(taskId);
+	if (
+		currentProject !== "allTask" &&
+		currentProject !== "todayTask" &&
+		currentProject !== "weekTask" &&
+		currentProject !== "importantTask"
+	) {
+		renderTasksFor(currentProject);
+	} else {
+		renderTasksForHome(currentProject);
+	}
+}
+
 export {
 	handleCreateProject,
 	handleDeleteProject,
@@ -101,4 +116,5 @@ export {
 	setCurrentProject,
 	getCurrentProject,
 	handleEditTask,
+	handleToggleTaskComplete,
 };

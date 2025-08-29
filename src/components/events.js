@@ -14,6 +14,7 @@ import {
 	handleDeleteTask,
 	handleGetTasks,
 	handleEditTask,
+	handleToggleTaskComplete,
 } from "./controller";
 
 import { getAllTasks } from "./model";
@@ -118,10 +119,10 @@ export function initTaskFormEvents() {
 	// handle task form submit
 	const $taskForm = document.querySelector(".task-form form");
 
-	const $currentProject = "Study";
-
 	$taskForm.addEventListener("submit", (e) => {
 		e.preventDefault();
+
+		const $currentProject = getCurrentProject();
 
 		const $title = $taskForm.querySelector("#task-title").value.trim();
 		const $details = $taskForm.querySelector("#task-details").value.trim();
@@ -179,6 +180,14 @@ export function initTaskOptionsEvents() {
 
 		if (e.target.dataset.action === "delete") {
 			handleDeleteTask(taskId);
+		}
+
+		// Task complete toggle
+		if (
+			e.target.classList.contains("checked") ||
+			e.target.classList.contains("unchecked")
+		) {
+			handleToggleTaskComplete(taskId);
 		}
 	});
 }

@@ -20,8 +20,14 @@ function createTaskCard(task) {
 	const cardLeft = createElement("div", ["task-card-left"]);
 
 	const isComplete = createElement("div", ["unchecked"]);
+	if (task.completed) {
+		isComplete.classList.add("unchecked", "checked");
+	}
 
 	const title = createElement("p", ["task-title"], task.title);
+	if (task.completed) {
+		title.classList.add("completed");
+	}
 
 	// Right Section
 	const cardRight = createElement("div", ["task-card-right"]);

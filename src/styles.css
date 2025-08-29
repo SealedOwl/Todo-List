@@ -192,8 +192,8 @@ header {
 
 .unchecked {
 	border: 2px solid var(--textColor);
-	width: 15px;
-	height: 15px;
+	width: 18px;
+	height: 18px;
 	border-radius: 50%;
 }
 
@@ -230,11 +230,6 @@ header {
 
 .small-priority {
 	border: 1px solid var(--blue);
-}
-
-.completed {
-	border: 1px solid var(--green) !important;
-	text-decoration: line-through;
 }
 
 /* Task options  */
@@ -520,4 +515,19 @@ select {
 	max-height: 500px;
 	transform: scaleY(1);
 	opacity: 1;
+}
+
+/* Task complete toggle style  */
+.checked {
+	background-image: url("./assets/checkmark.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-color: var(--textColor);
+	background-origin: border-box;
+	border-color: var(--darkGreen);
+}
+
+.completed {
+	text-decoration: line-through;
+	opacity: 0.6;
 }

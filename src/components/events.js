@@ -15,6 +15,7 @@ import {
 	handleGetTasks,
 	handleEditTask,
 	handleToggleTaskComplete,
+	handleToggleTaskImportant,
 } from "./controller";
 
 import { getAllTasks } from "./model";
@@ -188,6 +189,14 @@ export function initTaskOptionsEvents() {
 			e.target.classList.contains("unchecked")
 		) {
 			handleToggleTaskComplete(taskId);
+		}
+
+		// mark Task important
+		if (
+			e.target.classList.contains("fa-star") ||
+			e.target.classList.contains("mark-important")
+		) {
+			handleToggleTaskImportant(taskId);
 		}
 	});
 }

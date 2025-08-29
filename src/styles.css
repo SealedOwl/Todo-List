@@ -531,3 +531,9 @@ select {
 	text-decoration: line-through;
 	opacity: 0.6;
 }
+
+/* mark Task important  */
+
+.star-icon {
+	color: gold;
+}

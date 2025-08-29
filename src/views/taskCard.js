@@ -37,7 +37,11 @@ function createTaskCard(task) {
 	const details = createElement("div", ["details"], "Details");
 
 	const important = createElement("div", ["mark-important"]);
-	important.innerHTML = `<i class="fa-regular fa-star"></i>`;
+	if (task.important) {
+		important.innerHTML = `<i class="fa-solid fa-star star-icon"></i>`;
+	} else {
+		important.innerHTML = `<i class="fa-regular fa-star"></i>`;
+	}
 
 	// Options
 	const moreOption = createElement("div", ["task-more-option"]);

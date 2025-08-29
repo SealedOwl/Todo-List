@@ -89,6 +89,26 @@ function toggleTaskComplete(taskId) {
 	}
 }
 
+function toggleTaskImportant(taskId) {
+	let projectName = "";
+
+	for (const key in projects) {
+		const items = projects[key];
+
+		if (items.some((item) => item.id === taskId)) {
+			projectName = key;
+			break;
+		}
+	}
+
+	const tasks = projects[projectName];
+
+	const task = tasks.find((task) => task.id === taskId);
+	if (task) {
+		task.important = !task.important;
+	}
+}
+
 export {
 	createProject,
 	deleteProject,
@@ -100,4 +120,5 @@ export {
 	editTask,
 	getAllTasks,
 	toggleTaskComplete,
+	toggleTaskImportant,
 };

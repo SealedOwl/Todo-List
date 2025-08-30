@@ -9,6 +9,7 @@ import {
 	editTask,
 	toggleTaskComplete,
 	toggleTaskImportant,
+	getTask,
 } from "./model";
 
 import { renderProjectCards } from "../views/projectCard";
@@ -120,6 +121,11 @@ function handleToggleTaskImportant(taskId) {
 	}
 }
 
+function handleGetTaskForModal(taskId) {
+	const task = getTask(taskId);
+	return task;
+}
+
 export {
 	handleCreateProject,
 	handleDeleteProject,
@@ -133,4 +139,5 @@ export {
 	handleEditTask,
 	handleToggleTaskComplete,
 	handleToggleTaskImportant,
+	handleGetTaskForModal,
 };

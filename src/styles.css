@@ -537,3 +537,34 @@ select {
 .star-icon {
 	color: gold;
 }
+
+/* Details Modal  */
+
+dialog::backdrop {
+	background: rgba(0, 0, 0, 0.5);
+}
+
+.modal[open] {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 35rem;
+	background: var(--bgColor2);
+	padding: 2em;
+	border: none;
+	border-radius: 10px;
+	color: var(--textColor);
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+	overflow-x: hidden;
+}
+
+.modal[close] {
+	display: none !important;
+}
+
+.modal > h2 {
+	font-size: calc(var(--xl));
+}

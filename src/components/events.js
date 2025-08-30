@@ -16,12 +16,14 @@ import {
 	handleEditTask,
 	handleToggleTaskComplete,
 	handleToggleTaskImportant,
+	handleGetTaskForModal,
 } from "./controller";
 
 import { getAllTasks } from "./model";
 
 import { format, parseISO, isValid } from "date-fns";
 import { renderTasksFor, renderTasksForHome } from "./view";
+import { createShowDetailsModal } from "../views/showDetails";
 
 export function initProjectFormEvents() {
 	initFormToggle({
@@ -197,6 +199,39 @@ export function initTaskOptionsEvents() {
 			e.target.classList.contains("mark-important")
 		) {
 			handleToggleTaskImportant(taskId);
+		}
+
+		// show Task details modal;
+		if (e.target.classList.contains("details")) {
+			const task = handleGetTaskForModal(taskId);
+			const modal = createShowDetailsModal(task);
+
+			const $content = document.querySelector("#content");
+
+			if (modal) {
+				$content.appendChild(modal);
+				modal.showModal();
+
+				// close Modal
+
+				modal.addEventListener("click", (e) => {
+					const dialogDimensions = modal.getBoundingClientRect();
+					const isOutside =
+						e.clientX < dialogDimensions.left ||
+						e.clientX > dialogDimensions.right ||
+						e.clientY < dialogDimensions.top ||
+						e.clientY > dialogDimensions.bottom;
+					if (isOutside && e.target === modal) {
+						modal.close();
+					}
+				});
+
+				modal.addEventListener("keydown", (e) => {
+					if (e.key === "Enter") {
+						modal.close();
+					}
+				});
+			}
 		}
 	});
 }

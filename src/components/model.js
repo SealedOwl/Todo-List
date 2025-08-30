@@ -90,6 +90,26 @@ function toggleTaskComplete(taskId) {
 }
 
 function toggleTaskImportant(taskId) {
+	// let projectName = "";
+
+	// for (const key in projects) {
+	// 	const items = projects[key];
+
+	// 	if (items.some((item) => item.id === taskId)) {
+	// 		projectName = key;
+	// 		break;
+	// 	}
+	// }
+
+	// const tasks = projects[projectName];
+
+	const task = getTask(taskId);
+	if (task) {
+		task.important = !task.important;
+	}
+}
+
+function getTask(taskId) {
 	let projectName = "";
 
 	for (const key in projects) {
@@ -104,9 +124,7 @@ function toggleTaskImportant(taskId) {
 	const tasks = projects[projectName];
 
 	const task = tasks.find((task) => task.id === taskId);
-	if (task) {
-		task.important = !task.important;
-	}
+	return task;
 }
 
 export {
@@ -121,4 +139,5 @@ export {
 	getAllTasks,
 	toggleTaskComplete,
 	toggleTaskImportant,
+	getTask,
 };

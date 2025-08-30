@@ -78,6 +78,10 @@ header {
 	user-select: none;
 }
 
+.sidebar.hide-sidebar {
+	display: none;
+}
+
 .sidebar-section {
 	display: flex;
 	flex-direction: column;

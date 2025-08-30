@@ -10,7 +10,6 @@ import {
 	handleAddTask,
 	handleGetTasks,
 	handleGetAllProjects,
-	handleDeleteTask,
 } from "./components/controller";
 
 import { getAllProjects } from "./components/model";
@@ -20,6 +19,7 @@ import {
 	initProjectOptionsEvents,
 	initTaskOptionsEvents,
 	initProjectSelection,
+	initToggleSidebar,
 } from "./components/events";
 
 renderApp();
@@ -62,3 +62,4 @@ initProjectFormEvents();
 initProjectOptionsEvents();
 initTaskOptionsEvents();
 initProjectSelection();
+initToggleSidebar();

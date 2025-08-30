@@ -359,3 +359,14 @@ function clearActive() {
 	const currentActive = document.querySelector(".active");
 	if (currentActive) currentActive.classList.remove("active");
 }
+
+// Toggle sidebar
+
+export function initToggleSidebar() {
+	const $sidebarImg = document.querySelector(".sidebar-img");
+
+	$sidebarImg.addEventListener("click", () => {
+		const $sidebar = document.querySelector(".sidebar");
+		$sidebar.classList.toggle("hide-sidebar");
+	});
+}

@@ -15,6 +15,7 @@ import {
 	startOfDay,
 	endOfDay,
 } from "date-fns";
+import { initToggleSidebar } from "./events";
 
 export function renderApp() {
 	const $content = document.querySelector("#content");

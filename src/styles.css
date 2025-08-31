@@ -580,7 +580,7 @@ dialog::backdrop {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 0.3em 0;
+	padding: 0.2em 0;
 	gap: 10px;
 	font-weight: 700;
 }

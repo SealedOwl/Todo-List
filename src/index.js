@@ -1,6 +1,10 @@
 import "./styles.css";
 
-import { renderApp, renderTasksFor } from "./components/view";
+import {
+	renderApp,
+	renderTasksFor,
+	renderTasksForHome,
+} from "./components/view";
 import { renderProjectCards } from "./views/projectCard";
 import { renderProjectForm } from "./views/projectForm";
 import { renderTaskForm } from "./views/taskForm";
@@ -12,7 +16,7 @@ import {
 	handleGetAllProjects,
 } from "./components/controller";
 
-import { getAllProjects } from "./components/model";
+import { getAllProjects, loadFromLocalStorage } from "./components/model";
 import {
 	initTaskFormEvents,
 	initProjectFormEvents,
@@ -22,36 +26,38 @@ import {
 	initToggleSidebar,
 } from "./components/events";
 
+loadFromLocalStorage();
 renderApp();
 
+renderTasksForHome("allTasks");
 // ----------------------------------------------------------------
 
-handleCreateProject("Study");
+// handleCreateProject("Study");
 
-handleAddTask("Study", {
-	id: crypto.randomUUID(),
-	title: "Odin Project",
-	dueDate: "27-08-2025",
-	details: "Please dont procrastinate and study",
-	priority: "High",
-	important: true,
-});
+// handleAddTask("Study", {
+// 	id: crypto.randomUUID(),
+// 	title: "Odin Project",
+// 	dueDate: "27-08-2025",
+// 	details: "Please dont procrastinate and study",
+// 	priority: "High",
+// 	important: true,
+// });
 
-handleAddTask("Study", {
-	id: crypto.randomUUID(),
-	title: "Cloud computing",
-	details: "Coursera course",
-	priority: "medium",
-	dueDate: "15-08-2025",
-	important: true,
-});
+// handleAddTask("Study", {
+// 	id: crypto.randomUUID(),
+// 	title: "Cloud computing",
+// 	details: "Coursera course",
+// 	priority: "medium",
+// 	dueDate: "15-08-2025",
+// 	important: true,
+// });
 
-console.log(handleGetTasks("Study"));
-console.log(handleGetAllProjects());
+// console.log(handleGetTasks("Study"));
+// console.log(handleGetAllProjects());
 
 const projects = getAllProjects();
 renderProjectCards(projects);
-renderTasksFor("Study");
+// renderTasksFor("Study");
 
 // Testing
 

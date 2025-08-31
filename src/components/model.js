@@ -1,16 +1,55 @@
 const projects = {
-	default: [],
+	// default: [],
 };
+
+function saveToLocalStorage() {
+	try {
+		localStorage.setItem("projects", JSON.stringify(projects));
+	} catch (err) {
+		console.error("Error saving to local storage :", err);
+	}
+}
+
+function loadFromLocalStorage() {
+	try {
+		const data = localStorage.getItem("projects");
+		if (data) {
+			const parsed = JSON.parse(data);
+
+			Object.keys(parsed).forEach((key) => {
+				projects[key] = parsed[key];
+			});
+		} else {
+			projects["Study"] = [
+				{
+					id: crypto.randomUUID(),
+					title: "Odin Project",
+					details: "Please dont procrastinate and study",
+					dueDate: "27-08-2025",
+					priority: "High",
+					important: true,
+					completed: false,
+				},
+			];
+
+			saveToLocalStorage();
+		}
+	} catch (err) {
+		console.error("Error loading from local storage:", err);
+	}
+}
 
 function createProject(name) {
 	if (!projects[name]) {
 		projects[name] = [];
+		saveToLocalStorage();
 	}
 }
 
 function deleteProject(projectName) {
 	if (projectName) {
 		delete projects[projectName];
+		saveToLocalStorage();
 	}
 }
 
@@ -18,12 +57,14 @@ function renameProject(oldName, newName) {
 	if (projects[oldName] && !projects[newName]) {
 		projects[newName] = projects[oldName]; // Move tasks
 		delete projects[oldName];
+		saveToLocalStorage();
 	}
 }
 
 function addTask(projectName, taskObj) {
 	if (projects[projectName]) {
 		projects[projectName].push(taskObj);
+		saveToLocalStorage();
 	}
 }
 
@@ -54,6 +95,7 @@ function deleteTask(taskId) {
 		projects[projectName] = projects[projectName].filter(
 			(task) => task.id !== taskId
 		);
+		saveToLocalStorage();
 	}
 }
 
@@ -63,6 +105,7 @@ function editTask(oldTaskId, newTaskObj) {
 
 		if (indexToReplace !== -1) {
 			items[indexToReplace] = { ...items[indexToReplace], ...newTaskObj }; // replace only the fields that changed
+			saveToLocalStorage();
 			return true;
 		}
 	}
@@ -86,6 +129,7 @@ function toggleTaskComplete(taskId) {
 	const task = tasks.find((task) => task.id === taskId);
 	if (task) {
 		task.completed = !task.completed;
+		saveToLocalStorage();
 	}
 }
 
@@ -106,6 +150,7 @@ function toggleTaskImportant(taskId) {
 	const task = getTask(taskId);
 	if (task) {
 		task.important = !task.important;
+		saveToLocalStorage();
 	}
 }
 
@@ -140,4 +185,5 @@ export {
 	toggleTaskComplete,
 	toggleTaskImportant,
 	getTask,
+	loadFromLocalStorage,
 };

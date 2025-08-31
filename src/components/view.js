@@ -16,6 +16,7 @@ import {
 	endOfDay,
 } from "date-fns";
 import { initToggleSidebar } from "./events";
+import { createFooter } from "../views/footer";
 
 export function renderApp() {
 	const $content = document.querySelector("#content");
@@ -23,6 +24,7 @@ export function renderApp() {
 	const header = createHeader();
 	const sidebar = createSidebar();
 	const main = createMainContent();
+	const footer = createFooter();
 
 	const container = createElement("div", ["container"]);
 
@@ -32,6 +34,8 @@ export function renderApp() {
 	container.appendChild(main);
 
 	$content.appendChild(container);
+
+	$content.appendChild(footer);
 }
 
 export function renderTasksFor(projectName) {

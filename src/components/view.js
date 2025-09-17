@@ -7,7 +7,6 @@ import { handleGetTasks } from "./controller";
 import { getAllTasks } from "./model";
 
 import {
-	format,
 	isToday,
 	isWithinInterval,
 	addDays,
@@ -15,7 +14,6 @@ import {
 	startOfDay,
 	endOfDay,
 } from "date-fns";
-import { initToggleSidebar } from "./events";
 import { createFooter } from "../views/footer";
 
 export function renderApp() {
@@ -61,7 +59,6 @@ export function renderTasksForHome(projectName) {
 		});
 
 		tasks = todayTasks;
-		console.log(tasks);
 	} else if (projectName === "weekTask") {
 		const weekTasks = tasks.filter((t) => {
 			const taskDate = parse(t.dueDate, "dd-MM-yyyy", new Date());
@@ -72,10 +69,8 @@ export function renderTasksForHome(projectName) {
 		});
 
 		tasks = weekTasks;
-		console.log(tasks);
 	} else if (projectName === "importantTask") {
 		tasks = tasks.filter((t) => t.important === true);
-		console.log(tasks);
 	}
 
 	// Hide add task button for home section projects

@@ -1,20 +1,9 @@
 import "./styles.css";
 
-import {
-	renderApp,
-	renderTasksFor,
-	renderTasksForHome,
-} from "./components/view";
+import { renderApp, renderTasksForHome } from "./components/view";
 import { renderProjectCards } from "./views/projectCard";
 import { renderProjectForm } from "./views/projectForm";
 import { renderTaskForm } from "./views/taskForm";
-
-import {
-	handleCreateProject,
-	handleAddTask,
-	handleGetTasks,
-	handleGetAllProjects,
-} from "./components/controller";
 
 import { getAllProjects, loadFromLocalStorage } from "./components/model";
 import {
@@ -26,43 +15,24 @@ import {
 	initToggleSidebar,
 } from "./components/events";
 
+// Load data
 loadFromLocalStorage();
+
+// Render app
 renderApp();
 
+// Show default screen
 renderTasksForHome("allTasks");
-// ----------------------------------------------------------------
 
-// handleCreateProject("Study");
-
-// handleAddTask("Study", {
-// 	id: crypto.randomUUID(),
-// 	title: "Odin Project",
-// 	dueDate: "27-08-2025",
-// 	details: "Please dont procrastinate and study",
-// 	priority: "High",
-// 	important: true,
-// });
-
-// handleAddTask("Study", {
-// 	id: crypto.randomUUID(),
-// 	title: "Cloud computing",
-// 	details: "Coursera course",
-// 	priority: "medium",
-// 	dueDate: "15-08-2025",
-// 	important: true,
-// });
-
-// console.log(handleGetTasks("Study"));
-// console.log(handleGetAllProjects());
-
-const projects = getAllProjects();
-renderProjectCards(projects);
-// renderTasksFor("Study");
-
-// Testing
-
+// Render static forms
 renderProjectForm();
 renderTaskForm();
+
+// Render projects list from model
+const projects = getAllProjects();
+renderProjectCards(projects);
+
+// Initialize event listeners
 initTaskFormEvents();
 initProjectFormEvents();
 initProjectOptionsEvents();
